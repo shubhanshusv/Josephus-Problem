@@ -48,22 +48,21 @@ int main(){
    //cin >> n >> k;
 
    long int i;
-   ofstream myfile1,myfile2;
+   ofstream myfile;
    long int x;
    double y;
 
-   myfile1.open("datafilex.csv");
-   myfile2.open("datafiley.csv");
+   myfile.open("datafile_tree_1000.csv");
 
-   for(i=10000;i<=12000;i++){
+   for(i=10000;i<=50000;i++){
 
       y = 0;
 
-      for(j=0;j<10;j++){
+      for(j=0;j<3;j++){
 
          auto start = std::chrono::high_resolution_clock::now();
 
-         x = Josephus(i,2);
+         x = Josephus(i,1000);
 
          auto end = std::chrono::high_resolution_clock::now();
 
@@ -71,12 +70,15 @@ int main(){
 
       }
 
-      y = y/10;
+      y = y/3;
 
-      myfile1 << x << "\n";
-      myfile2 << y << "\n";
+      myfile << i << "," << y << "\n";
+
+      i+=9;
 
    }
+
+   myfile.close();
 
    return 0;
 
